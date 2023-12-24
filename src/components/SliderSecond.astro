@@ -37,12 +37,12 @@ function showSlides(n: number) {
 }
 
 // Function to advance to the next slide
-function plusSlides(n) {
+function plusSlides(n: number) {
   showSlides((slideIndex += n));
 }
 
 // Function to navigate to a specific slide
-function currentSlide(n) {
+function currentSlide(n: number) {
   showSlides((slideIndex = n));
 }
 

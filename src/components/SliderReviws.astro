@@ -4,7 +4,7 @@ interface Props {
 }
 
 interface Review {
-  imgPerfilCustomer: String,
+  imgPerfilCustomer: string,
   serviceCustomer: String,
   NameCustomer: String,
   ReviewCustomer: String,
@@ -44,13 +44,8 @@ function showSlides(n: number) {
 }
 
 // Function to advance to the next slide
-function plusSlides(n) {
+function plusSlides(n: number) {
   showSlides((slideIndex += n));
-}
-
-// Function to navigate to a specific slide
-function currentSlide(n) {
-  showSlides((slideIndex = n));
 }
 
 // Automatically advance to the next slide every 3 seconds (3000 milliseconds)
