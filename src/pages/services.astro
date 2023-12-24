@@ -1,0 +1,76 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Head from '../components/Head.astro';
+import Card from '../components/Card.astro';
+import WhatsApp from '../components/WhatsApp.astro';
+import Footer from '../components/Footer.astro';
+
+const pricingData = [
+    {
+        title: "Masaje 1",
+        imgUrl: "https://chmassagetherapy.co.uk/wp-content/uploads/2022/08/toptotoe-1024x684.jpg",
+        pricing60: "$49.000",
+        pricing90: "$69.000",
+        pricing120: "$89.000",
+        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    },
+    {
+        title: "Masaje 2",
+        imgUrl: "https://www.massagesme.uk/img/blogs/the-most-popular-massages-in-london-uk.jpg",
+        pricing60: "$79.000",
+        pricing90: "$99.000",
+        pricing120: "$119.000",
+        description: "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+    },
+    {
+        title: "Masaje 3",
+        imgUrl: "https://londonmassage4u.co.uk/wp-content/uploads/2020/11/massage-therapist-massaging-woman-min.jpg",
+        pricing60: "$99.000",
+        pricing90: "$119.000",
+        pricing120: "$139.000",
+        description: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
+    },
+];
+---
+
+<Layout description="desc" title="Servicios masajes - Laskmi">
+	<Head></Head>
+    <main>
+        <section class="setionMain">
+            <img src="images/spa.jpg" alt="" >
+            <div>
+                <h1 class="subTitle">Nuestros Servicios</h1>
+                <p>Descubre un mundo de relajación y rejuvenecimiento a través de nuestros tratamientos personalizados.</p>
+            </div>
+        </section>
+        <section class="contentInfo">
+            <h2 class="subTitle">Reserva Masaje Y Bienestar</h2>
+            <p>Vamos, te mereces algo de tiempo</p>
+        </section>
+        <div class="containerCards">
+            <Card araryPricing={pricingData}/>
+        </div>
+	</main>
+	<Footer></Footer>
+	<WhatsApp />
+	
+</Layout>
+
+<style>
+	.setionMain{
+        max-width: 100%;
+        max-height: 100vh;
+        overflow: hidden;
+        position: relative;
+    }
+
+    .setionMain div{
+        z-index: 2;
+    }
+
+    .setionMain img{
+        object-fit: cover; /* Escala la imagen manteniendo la proporción y cubriendo el contenedor */
+        object-position: center; /* Centra la imagen dentro del contenedor */
+        display: block;
+    }
+</style>

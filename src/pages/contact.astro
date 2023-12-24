@@ -1,0 +1,58 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Head from '../components/Head.astro';
+import WhatsApp from '../components/WhatsApp.astro';
+import Footer from '../components/Footer.astro';
+
+---
+
+<Layout description="desc" title="Contactenos - Lakshmi spa">
+	<Head></Head>
+    <main>
+		<section class="contentInfo">
+            <h1 class="subTitle">¿Necesitas Asistencia Personalizada?</h1>
+            <div>
+                <img src="images/about/main.png" alt="">
+            </div>
+
+            <p>Nuestro amable equipo de atención al cliente está disponible de 8 a.m. a 8 p.m., de lunes a domingo, los 365 días del año, incluidos los días festivos.
+                Por favor envíenos un correo electrónico a <a class="linkIg" href="mailto:">info@laskshmi.com</a> o llámenos al <a class="linkIg" href="tel:+">3138373086</a></p>
+        </section>
+    </main>
+	<Footer></Footer>
+	<WhatsApp />
+	
+</Layout>
+
+<style>
+main{
+    margin-top: 3rem;
+}
+.contentInfo div img{
+    max-width: 95%;
+}
+
+.frase{
+    color: var(--color-vinotinto);
+    font-size: 23px;
+    font-style: oblique;
+}
+
+.linkIg{
+    text-decoration: none;
+    color: var(--color-golden-200);
+    font-weight: 600;
+}
+
+.containerImgIg img{
+    border-radius: 5px;
+}
+/*  para dispositivos móviles */
+@media only screen and (max-width: 600px) {
+  /* Estilos para dispositivos móviles pequeños */
+  .containerImgIg img{
+    width: 45%;
+    margin: 0.4rem;
+  }
+}
+</style>

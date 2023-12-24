@@ -1,61 +1,121 @@
 ---
 interface Props {
-	title: string;
-	body: string;
-	href: string;
+	araryPricing: Array<PricingItem>;
 }
 
-const { href, title, body } = Astro.props;
----
+const { araryPricing } = Astro.props;
 
-<li class="link-card">
-	<a href={href}>
-		<h2>
-			{title}
-			<span>&rarr;</span>
-		</h2>
-		<p>
-			{body}
-		</p>
-	</a>
-</li>
+interface PricingItem {
+    title: string;
+    imgUrl: string;
+    pricing60: string;
+    pricing90: string;
+    pricing120: string;
+    description: string;
+}
+---
+	
+{
+araryPricing.map( item => 
+		<div class="pricing-card">
+			<div class="containerImg">
+				<img src={item.imgUrl} alt={item.title + 'spa bogota - lakshmi'} />
+			</div>
+			<h2 class="pricing-title">{item.title}</h2>
+			<ul class="pricing-features">
+				<li><span class="time">60 minutos</span> <hr/> <span class="pricing">{item.pricing60}</span></li>
+				<li><span class="time">90 minutos</span> <hr/><span class="pricing">{item.pricing90}</span></li>
+				<li><span class="time">120 minutos</span> <hr/> <span class="pricing">{item.pricing120}</span></li>
+			</ul>
+			<p>{item.description}</p>
+			<a class="pricing-button" href="https://wa.link/b0n4my">Reservar</a>
+		</div>
+	)
+}
+
 <style>
-	.link-card {
-		list-style: none;
-		display: flex;
-		padding: 1px;
-		background-color: #23262d;
-		background-image: none;
-		background-size: 400%;
-		border-radius: 7px;
-		background-position: 100%;
-		transition: background-position 0.6s cubic-bezier(0.22, 1, 0.36, 1);
-		box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.1);
-	}
-	.link-card > a {
-		width: 100%;
-		text-decoration: none;
-		line-height: 1.4;
-		padding: calc(1.5rem - 1px);
-		border-radius: 8px;
-		color: white;
-		background-color: #23262d;
-		opacity: 0.8;
-	}
-	h2 {
-		margin: 0;
-		font-size: 1.25rem;
-		transition: color 0.6s cubic-bezier(0.22, 1, 0.36, 1);
-	}
-	p {
-		margin-top: 0.5rem;
-		margin-bottom: 0;
-	}
-	.link-card:is(:hover, :focus-within) {
-		background-position: 0;
-		background-image: var(--accent-gradient);
-	}
-	.link-card:is(:hover, :focus-within) h2 {
-		color: rgb(var(--accent-light));
-	}
+/* Estilos para la tarjeta de precios */
+.pricing-card {
+    margin: 2rem;
+    background-color: var(--color-golden-300);
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    padding: 20px;
+    max-width: 300px;
+    width: 100%;
+	margin-bottom: 2rem;
+}
+
+/* Estilos para el contenedor de la imagen */
+.containerImg {
+    margin-bottom: 15px; /* Ajusta el margen según sea necesario */
+}
+
+/* Estilos para la imagen dentro del contenedor */
+.containerImg img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px; /* Borde redondeado para la imagen, ajusta según sea necesario */
+}
+
+/* Estilos para el título */
+.pricing-title {
+    color: #333;
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+/* Estilos para la lista de características */
+.pricing-features {
+    list-style: none;
+    padding: 0;
+}
+
+/* Estilos para cada elemento de la lista de características */
+.pricing-features li {
+    margin: 10px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* Estilos para la línea (hr) entre la duración y el precio */
+.pricing-features hr {
+    flex-grow: 3;
+    margin: 0 10px;
+    border: none;
+    border-top: 1px solid var(--color-vinotinto);
+}
+
+/* Estilos para el tiempo (duración) y el precio */
+.pricing-features .time,
+.pricing-features .pricing {
+    flex-grow: 1;
+}
+
+/* Estilos para el botón de reserva */
+.pricing-button {
+    background-color: var(--color-vinotinto);
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+    text-decoration: none;
+    display: inline-block;
+    transition: background-color 0.3s ease;
+    margin-top: 20px;
+}
+
+/* Estilos para el botón de reserva al pasar el mouse */
+.pricing-button:hover {
+    background-color: #3a0309;
+}
+@media only screen and (max-width: 600px) {
+    .pricing-card{
+        margin: 1rem 0;
+    }
+}
 </style>

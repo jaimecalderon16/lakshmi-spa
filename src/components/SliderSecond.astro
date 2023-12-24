@@ -1,0 +1,252 @@
+---
+interface Props {
+	images: Array<string>;
+}
+
+const { images } = Astro.props;
+
+---
+
+<script>
+let slideIndex = 1;
+const slides:any = document.getElementsByClassName("slidesecond");
+const dots = document.getElementsByClassName("dotSecont");
+
+// Function to show a specific slide
+function showSlides(n: number) {
+  if (n > slides.length) {
+    slideIndex = 1;
+  }
+  if (n < 1) {
+    slideIndex = slides.length;
+  }
+
+  // Hide all slides
+  for (let i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";
+  }
+
+  // Remove the "active" class from all dots
+  for (let i = 0; i < dots.length; i++) {
+    dots[i].className = dots[i].className.replace(" active", "");
+  }
+
+  // Display the current slide and mark its corresponding dot as active
+  slides[slideIndex - 1].style.display = "block";
+  dots[slideIndex - 1].className += " active";
+}
+
+// Function to advance to the next slide
+function plusSlides(n) {
+  showSlides((slideIndex += n));
+}
+
+// Function to navigate to a specific slide
+function currentSlide(n) {
+  showSlides((slideIndex = n));
+}
+
+// Automatically advance to the next slide every 3 seconds (3000 milliseconds)
+setInterval(function () {
+  plusSlides(1);
+}, 5000);
+
+// Initialize the slider
+showSlides(slideIndex);
+
+</script>
+
+<div class="slider-container">
+    {
+        images.map(item => 
+        <div class="slidesecond fade">
+            <img class="slide-image" src={item} />
+        </div>
+        ) 
+    }
+
+  
+    <div class="slider-nav">
+      <a class="slider-nav-btn" onclick="plusSlides(-1)">
+        <svg class="icon icon-tabler icon-tabler-chevron-left" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+            <path d="M15 6l-6 6l6 6" />
+        </svg>
+      </a>
+      <a class="slider-nav-btn" onclick="plusSlides(1)">
+        <svg class="icon icon-tabler icon-tabler-chevron-right" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+            <path d="M9 6l6 6l-6 6" />
+        </svg>
+      </a>
+    </div>
+  
+    <div class="dot-container">
+        {
+            images.map((item, index) => 
+            <span class="dotSecont" onclick="`currentSlide(${index + 1})`"></span>
+            )
+        }
+    </div>
+  </div>
+
+
+  <style>
+
+.slider-container {
+  width: 100%;
+  text-align: center;
+  position: relative;
+}
+
+.slidesecond {
+  width: 100%;
+  display: none;
+  background-color: #D6C58A;
+  border-radius: 20px;
+}
+
+.slide-image {
+  width: 90%;
+  object-fit: cover;
+  filter: brightness(0.6);
+}
+
+.slide-content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 5;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  text-align: center;
+  padding: 1rem;
+}
+.slide-title {
+  width: 100%;
+  max-width: 50rem;
+  color: white;
+  font-size: 2rem;
+  font-weight: 500;
+  text-transform: capitalize;
+}
+.slide-desc {
+  width: 100%;
+  max-width: 50rem;
+  color: lightgray;
+  font-size: 1rem;
+  font-weight: 300;
+}
+.slide-btn {
+  color: black;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-size: 1.2rem;
+  font-weight: 500;
+  margin-top: 1rem;
+  border-radius: 0.5rem;
+  padding: 0.5rem 1rem;
+  text-transform: capitalize;
+  transition: ease 0.3s;
+}
+.slide-btn:hover {
+  gap: 1rem;
+}
+
+.slide-number-container {
+  position: absolute;
+  bottom: 1rem;
+  left: 1rem;
+  z-index: 5;
+  font-size: 1.5rem;
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  color: rgba(211, 211, 211, 0.788);
+  letter-spacing: 0.2rem;
+}
+.slide-number-container hr {
+  width: 3rem;
+  transform: rotate(130deg);
+  border-color: rgba(211, 211, 211, 0.788);
+}
+
+.slider-nav {
+  width: 110%;
+  position: absolute;
+  bottom: 37%;
+  left: -1rem;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+.slider-nav-btn {
+  cursor: pointer;
+  background-color: var(--color-vinotinto);
+  font-size: 1.5rem;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  display: flex;
+  align-items: center;
+  width: 2rem;
+  height: 1.5rem;
+  justify-content: center;
+  transition: ease 0.3s;
+}
+.icon{
+    stroke: var(--color-golden-200);
+}
+.slider-nav-btn:hover {
+  background-color: white;
+  color: black;
+}
+
+.dot-container {
+  position: absolute;
+  bottom: 1rem;
+  left: 0;
+  z-index: 4;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+.dotSecont {
+  cursor: pointer;
+  height: 1rem;
+  width: 1rem;
+  background-color: bisque;
+  border-radius: 50%;
+  display: inline-block;
+  transition: ease 0.3s;
+}
+.active,
+.dotSecont:hover {
+  background-color: var(--color-vinotinto);
+}
+
+.fade {
+  animation-name: fade;
+  animation-duration: 1s;
+}
+@keyframes fade {
+  from {
+    opacity: 0.8;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+  </style>

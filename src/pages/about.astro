@@ -1,0 +1,72 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Head from '../components/Head.astro';
+import WhatsApp from '../components/WhatsApp.astro';
+import Footer from '../components/Footer.astro';
+
+---
+
+<Layout description="desc" title="Conoce a Lakshmi spa">
+	<Head></Head>
+    <main>
+		<section class="contentInfo">
+            <h1 class="subTitle">Conocenos</h1>
+            <div>
+                <img src="images/about/main.png" alt="">
+            </div>
+
+            <p>En Lakshimi, no solo ofrecemos tratamientos de bienestar, sino que creamos un santuario dedicado a rejuvenecer mente, cuerpo y espíritu. Fundado con la visión de proporcionar una escapada serena en el corazón de Usaquen, nuestro spa se distingue por su compromiso con la excelencia en cada detalle.</p>
+        </section>
+        <section class="contentInfo">
+            <h3 class="frase">
+                “Cuando priorizamos nuestro bienestar, llevamos vidas más saludables y felices.”
+            </h3>
+        </section>
+        <section class="contentInfo">
+            <h2 class="subTitle">Mantente conectado</h2>
+            <p>Siguenos y comparte tu experiencia <a class="linkIg" href=""> @Laskshmispa</a></p>
+            <div class="containerImgIg">
+                <img src="images/about/imgInsatgram1.jpg" alt="">
+                <img src="images/about/imgInsatgram1.jpg" alt="">
+                <img src="images/about/imgInsatgram1.jpg" alt="">
+                <img src="images/about/imgInsatgram1.jpg" alt="">
+            </div>
+        </section>
+    </main>
+	<Footer></Footer>
+	<WhatsApp />
+	
+</Layout>
+
+<style>
+main{
+    margin-top: 3rem;
+}
+.contentInfo div img{
+    max-width: 95%;
+}
+
+.frase{
+    color: var(--color-vinotinto);
+    font-size: 23px;
+    font-style: oblique;
+}
+
+.linkIg{
+    text-decoration: none;
+    color: var(--color-golden-200);
+    font-weight: 600;
+}
+
+.containerImgIg img{
+    border-radius: 5px;
+}
+/*  para dispositivos móviles */
+@media only screen and (max-width: 600px) {
+  /* Estilos para dispositivos móviles pequeños */
+  .containerImgIg img{
+    width: 45%;
+    margin: 0.4rem;
+  }
+}
+</style>
