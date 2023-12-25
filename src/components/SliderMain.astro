@@ -38,7 +38,7 @@ function showSlides(n: number) {
 }
 
 // Function to advance to the next slide
-function plusSlides(n: number) {
+function plusSlides(n: any) {
   showSlides((slideIndex += n));
 }
 
@@ -102,9 +102,7 @@ showSlides(slideIndex);
   </div>
 
 
-  <style>
-@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap");
-
+<style>
 * {
   margin: 0;
   padding: 0;
@@ -262,4 +260,4 @@ showSlides(slideIndex);
   }
 }
 
-  </style>
+</style>

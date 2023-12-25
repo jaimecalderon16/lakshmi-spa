@@ -1,44 +1,3 @@
-<script>
-const navbarMenu:any = document.getElementById("menu");
-const burgerMenu = document.getElementById("burger");
-const bgOverlay:any = document.querySelector(".overlay");
-
-if (burgerMenu && bgOverlay) {
-   burgerMenu.addEventListener("click", () => {
-      navbarMenu.classList.add("is-active");
-      bgOverlay.classList.toggle("is-active");
-   });
-
-   bgOverlay.addEventListener("click", () => {
-      navbarMenu.classList.remove("is-active");
-      bgOverlay.classList.toggle("is-active");
-   });
-}
-
-// Close Navbar Menu on Links Click
-document.querySelectorAll(".menu-link").forEach((link) => {
-   link.addEventListener("click", () => {
-      navbarMenu.classList.remove("is-active");
-      bgOverlay.classList.remove("is-active");
-   });
-});
-
-// Open and Close Search Bar Toggle
-const searchBlock:any = document.querySelector(".search-block");
-const searchToggle = document.querySelector(".search-toggle");
-const searchCancel = document.querySelector(".search-cancel");
-
-if (searchToggle && searchCancel) {
-   searchToggle.addEventListener("click", () => {
-      searchBlock.classList.add("is-active");
-   });
-
-   searchCancel.addEventListener("click", () => {
-      searchBlock.classList.remove("is-active");
-   });
-}
-
-</script>
 
 <head>
     <header class="header" id="header">
@@ -54,7 +13,7 @@ if (searchToggle && searchCancel) {
                     <span class="burger-line"></span>
                 </div>
             </div>
-           <span class="overlay"></span>
+           <span id="overlay"></span>
            <div class="menu" id="menu">
               <ul class="menu-inner">
                  <li class="menu-item"><a class="menu-link" href="./index.html">Inicio</a></li>
@@ -70,6 +29,48 @@ if (searchToggle && searchCancel) {
      </header>
 </head>
 
+<script is:inline>
+const navbarMenu = document.getElementById("menu");
+const burgerMenu = document.getElementById("burger");
+const bgOverlay = document.getElementById("overlay");
+
+if (burgerMenu && bgOverlay) {
+	burgerMenu.addEventListener("click", () => {
+		navbarMenu.classList.add("is-active");
+		bgOverlay.classList.toggle("is-active");
+	});
+
+	bgOverlay.addEventListener("click", () => {
+		navbarMenu.classList.remove("is-active");
+		bgOverlay.classList.toggle("is-active");
+		console.log('click');
+	});
+}
+
+// Close Navbar Menu on Links Click
+document.querySelectorAll(".menu-link").forEach((link) => {
+	link.addEventListener("click", () => {
+		navbarMenu.classList.remove("is-active");
+		bgOverlay.classList.remove("is-active");
+	});
+});
+
+// Open and Close Search Bar Toggle
+const searchBlock = document.querySelector(".search-block");
+const searchToggle = document.querySelector(".search-toggle");
+const searchCancel = document.querySelector(".search-cancel");
+
+if (searchToggle && searchCancel) {
+	searchToggle.addEventListener("click", () => {
+		searchBlock.classList.add("is-active");
+	});
+
+	searchCancel.addEventListener("click", () => {
+		searchBlock.classList.remove("is-active");
+	});
+}
+
+</script>	
 <style>
 @import url("https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700&display=swap");
 
@@ -288,7 +289,7 @@ if (searchToggle && searchCancel) {
 		width: 5.4rem;
 	}
 }
- .overlay {
+ #overlay {
 	 position: fixed;
 	 top: 0;
 	 left: 0;
@@ -300,7 +301,7 @@ if (searchToggle && searchCancel) {
 	 background-color: rgba(0, 0, 0, 0.6);
 	 transition: all 0.3s ease-in-out;
 }
- .overlay.is-active {
+ #overlay.is-active {
 	 display: block;
 	 opacity: 1;
 	 visibility: visible;
